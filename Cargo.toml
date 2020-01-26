@@ -4,7 +4,12 @@ version = "0.1.0"
 authors = ["cemondr <cemconder@gmail.com>"]
 edition = "2018"
 
+[lib]
+name = "rsa_key_generator"
+path = "src/lib.rs"
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 toy_rsa_lib = {git = "http://github.com/pdx-cs-rust/toy-rsa-lib"}
+rug = "1.6"
