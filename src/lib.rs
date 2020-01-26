@@ -49,3 +49,24 @@ fn test_decrypt2(){
     let test_message = 17;
     assert_eq!(decrypt(test_key,test_message),150586)
 }
+
+
+pub fn genkey() -> (u32,u32){
+    let mut p = 2;
+    let mut q = 2;
+    loop {
+        let lcm = lambda(p as u64,q as u64);
+        if EXP< lcm && gcd(EXP,lcm) ==1 {
+            break;
+        }
+        p = rsa_prime();
+        q = rsa_prime();
+    }
+    (p,q)
+}
+
+#[test]
+fn count_genkey_loop(){
+    let (x,y) = genkey();
+    print!("received {:?}", (x,y))
+}
