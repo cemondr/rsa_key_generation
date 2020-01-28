@@ -1,11 +1,11 @@
 [package]
-name = "rsa_key_generation"
+name = "toy_rsa"
 version = "0.1.0"
-authors = ["cemondr <cemconder@gmail.com>"]
+authors = ["cemondr <yco@pdx.edu>"]
 edition = "2018"
 
 [lib]
-name = "rsa_key_generator"
+name = "toy_rsa"
 path = "src/lib.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

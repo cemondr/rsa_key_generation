@@ -1,5 +1,5 @@
 #[cfg(test)]
-use rsa_key_generator::*;
+use toy_rsa::*;
 use rug::integer::IsPrime;
 use rug::Integer;
 
