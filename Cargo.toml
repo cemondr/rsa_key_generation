@@ -12,4 +12,3 @@ path = "src/lib.rs"
 
 [dependencies]
 toy_rsa_lib = {git = "http://github.com/pdx-cs-rust/toy-rsa-lib"}
-rug = "1.6"

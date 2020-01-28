@@ -1,7 +1,8 @@
 #[cfg(test)]
 use toy_rsa::*;
-use rug::integer::IsPrime;
-use rug::Integer;
+use std::assert;
+use toy_rsa_lib::*;
+
 
 #[test]
 fn test_lambda(){
@@ -14,33 +15,33 @@ fn test_lambda_2(){
 
 #[test]
 fn test_encrypt(){
-    assert_eq!(encrypt(349,9),4)
+    assert_eq!(encrypt(0xde9c5816141c8ba9,12345),0x164e44b86776d497)
 }
 #[test]
 fn test_encrypt_2(){
-    assert_eq!(encrypt(214,42),16)
+    assert_eq!(encrypt(9732371365385914997,10211991),6336136418123291215)
 }
 
 #[test]
 fn test_decrypt(){
-    let test_key = (4,10);
-    let test_message = 23;
+    let test_key = (0xed23e6cd,0xf050a04d);
+    let test_message = 0x164e44b86776d497;
     //rustc infers type based on decrypt interface
-    assert_eq!(decrypt(test_key,test_message), 9)
+    assert_eq!(decrypt(test_key,test_message), 12345)
 }
 #[test]
 fn test_decrypt2(){
-    let test_key = (831,991);
-    let test_message = 17;
-    assert_eq!(decrypt(test_key,test_message),150586)
+    let test_key = (3702622039, 2628507923);
+    let test_message = 6336136418123291215;
+    assert_eq!(decrypt(test_key,test_message),10211991)
 }
 
 #[test]
-fn count_genkey_loop(){
+fn test_genkey(){
+    let exp = 65537;
     let key = genkey();
-    print!("received {:?}", (key.0,key.1));
-    let p = Integer::from(key.0);
-    let q = Integer::from(key.1);
-    assert_eq!(p.is_probably_prime(15), IsPrime::Yes);
-    assert_eq!(q.is_probably_prime(15), IsPrime::Yes);
+    let lmbd = lambda(key.0 as u64,key.1 as u64);
+    assert!(exp < lmbd , true);
+    assert!(gcd(exp,lmbd) == 1, true)
+    
 }
