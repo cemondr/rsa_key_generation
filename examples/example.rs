@@ -18,8 +18,6 @@ fn main(){
     println!("Example 2:");
     let private_key:(u32,u32) = genkey();
     let public_key: u64 = private_key.0 as u64 * private_key.1 as u64;
-    println!("private_key 2: {:?} ", private_key);
-    println!("public_key: {:?}", public_key);
     let pre_encrypted_message = 10211991;
     println!("pre_encrypted_message_2: {:?}",pre_encrypted_message);
     let encrypted_message = encrypt(public_key,pre_encrypted_message);
